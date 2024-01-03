@@ -35,7 +35,10 @@ def copy_fw_files (source, target, env):
 
 
 def createZIP():
-    complete_ZIP_Filename = Path('./' + zip_file_name + '_' + firmware_version + '.zip')
+    if os.path.exists("./zip_files") == False:
+        os.mkdir("./zip_files")
+    
+    complete_ZIP_Filename = Path('./zip_files/' + zip_file_name + '_' + firmware_version + '.zip')
     path_to_archive = Path("./" + community_path + "/Community")
     with zipfile.ZipFile(complete_ZIP_Filename, "w", zipfile.ZIP_DEFLATED) as zipf:
         for fp in path_to_archive.glob("**/*"):

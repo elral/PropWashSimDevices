@@ -50,14 +50,12 @@ jobs:
       - name: Archive production artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: firmware
-          path:
-            ./
+          name: ZIP files
+          path: .zip_files/*.zip
 
       - name: Release
         uses: softprops/action-gh-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          files:
-            ./*.zip
+          files: .zip_files/*.zip
