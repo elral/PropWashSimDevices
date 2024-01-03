@@ -1,5 +1,6 @@
 Import("env")
 import os, zipfile, shutil
+from pathlib import Path
 
 # Get the version number from the build environment.
 firmware_version = os.environ.get('VERSION', "")
@@ -34,12 +35,11 @@ def copy_fw_files (source, target, env):
 
 
 def createZIP():
-    complete_ZIP_Filename = './' + zip_file_name + '_' + firmware_version + '.zip'
-    with zipfile.ZipFile(complete_ZIP_Filename, 'w', zipfile.ZIP_DEFLATED) as target:
-        for root, dirs, files in os.walk(community_path + "/Community"):
-            for file in files:
-                add = os.path.join(root, file)
-                target.write(add)
+    complete_ZIP_Filename = Path('./' + zip_file_name + '_' + firmware_version + '.zip')
+    path_to_archive = Path("./" + community_path + "/Community")
+    with zipfile.ZipFile(complete_ZIP_Filename, "w", zipfile.ZIP_DEFLATED) as zipf:
+        for fp in path_to_archive.glob("**/*"):
+            zipf.write(fp, arcname=fp.relative_to(path_to_archive))
 
 
 env.AddPostAction("$BUILD_DIR/${PROGNAME}.hex", copy_fw_files)
