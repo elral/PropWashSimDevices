@@ -19,8 +19,8 @@ firmware_version = firmware_version.strip(".")
 
 
 def copy_fw_files (source, target, env):
-#    if firmware_version == "0.0.1":
-#        return
+    if firmware_version == "0.0.1":
+        return
 
     fw_file_name=str(target[0])
 
