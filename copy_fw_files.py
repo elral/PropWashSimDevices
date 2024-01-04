@@ -6,7 +6,7 @@ from pathlib import Path
 firmware_version = os.environ.get('VERSION', "")
 
 # Get the ZIP filename from the build environment.
-zip_file_name = env.GetProjectOption('custom_zip_filename', "")
+community_project = env.GetProjectOption('community_project', "")
 
 # Get the custom folder from the build environment.
 community_path = env.GetProjectOption('custom_device_folder', "")
@@ -30,24 +30,13 @@ def copy_fw_files (source, target, env):
 
     shutil.copy(fw_file_name, community_path + "/Community/firmware")
 
-    #createZIP()
-    original_folder_path = community_path + "/Community"         # Replace with your folder path
-    zip_file_path = Path('./zip_files/' + zip_file_name + '_' + firmware_version + '.zip')           # Replace with your desired zip file name
-    new_folder_in_zip = 'KAV_Simulation'   # Replace with your desired new folder name inside the ZIP
-    zip_folder(original_folder_path, zip_file_path, new_folder_in_zip)
+    original_folder_path = community_path + "/Community"
+    zip_file_path = Path('./zip_files/' + community_project + '_' + firmware_version + '.zip')
+    new_folder_in_zip = community_project
+    createZIP(original_folder_path, zip_file_path, new_folder_in_zip)
 
 
-def createZIP():
-    if os.path.exists("./zip_files") == False:
-        os.mkdir("./zip_files")
-    
-    complete_ZIP_Filename = Path('./zip_files/' + zip_file_name + '_' + firmware_version + '.zip')
-    path_to_archive = Path("./" + community_path + "/Community")
-    with zipfile.ZipFile(complete_ZIP_Filename, "w", zipfile.ZIP_DEFLATED) as zipf:
-        for fp in path_to_archive.glob("**/*"):
-            zipf.write(fp, arcname=fp.relative_to(path_to_archive))
-
-def zip_folder(original_folder_path, zip_file_path, new_folder_name):
+def createZIP(original_folder_path, zip_file_path, new_folder_name):
     if os.path.exists("./zip_files") == False:
         os.mkdir("./zip_files")
     with zipfile.ZipFile(zip_file_path, 'w') as zipf:
@@ -57,6 +46,16 @@ def zip_folder(original_folder_path, zip_file_path, new_folder_name):
                 new_path = os.path.join(new_folder_name, os.path.relpath(os.path.join(root, file), original_folder_path))
                 # Add the file to the ZIP file
                 zipf.write(os.path.join(root, file), new_path)
+
+def createZIP_old():
+    if os.path.exists("./zip_files") == False:
+        os.mkdir("./zip_files")
+    
+    complete_ZIP_Filename = Path('./zip_files/' + community_project + '_' + firmware_version + '.zip')
+    path_to_archive = Path("./" + community_path + "/Community")
+    with zipfile.ZipFile(complete_ZIP_Filename, "w", zipfile.ZIP_DEFLATED) as zipf:
+        for fp in path_to_archive.glob("**/*"):
+            zipf.write(fp, arcname=fp.relative_to(path_to_archive))
 
 
 env.AddPostAction("$BUILD_DIR/${PROGNAME}.hex", copy_fw_files)
