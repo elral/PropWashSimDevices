@@ -12,8 +12,6 @@ zip_file_name = env.GetProjectOption('custom_zip_filename', "")
 community_path = env.GetProjectOption('custom_device_folder', "")
 
 
-if firmware_version == "":
-  firmware_version = "0.0.1"
 firmware_version = firmware_version.lstrip("v")
 firmware_version = firmware_version.strip(".")
 
@@ -31,7 +29,12 @@ def copy_fw_files (source, target, env):
         fw_file_name=fw_file_name[0:-3] + "uf2"
 
     shutil.copy(fw_file_name, community_path + "/Community/firmware")
-    createZIP()
+
+    #createZIP()
+    original_folder_path = community_path + "/Community"         # Replace with your folder path
+    zip_file_path = Path('./zip_files/' + zip_file_name + '_' + firmware_version + '.zip')           # Replace with your desired zip file name
+    new_folder_in_zip = 'KAV_Simulation'   # Replace with your desired new folder name inside the ZIP
+    zip_folder(original_folder_path, zip_file_path, new_folder_in_zip)
 
 
 def createZIP():
@@ -43,6 +46,17 @@ def createZIP():
     with zipfile.ZipFile(complete_ZIP_Filename, "w", zipfile.ZIP_DEFLATED) as zipf:
         for fp in path_to_archive.glob("**/*"):
             zipf.write(fp, arcname=fp.relative_to(path_to_archive))
+
+def zip_folder(original_folder_path, zip_file_path, new_folder_name):
+    if os.path.exists("./zip_files") == False:
+        os.mkdir("./zip_files")
+    with zipfile.ZipFile(zip_file_path, 'w') as zipf:
+        for root, dirs, files in os.walk(original_folder_path):
+            for file in files:
+                # Create a new path in the ZIP file
+                new_path = os.path.join(new_folder_name, os.path.relpath(os.path.join(root, file), original_folder_path))
+                # Add the file to the ZIP file
+                zipf.write(os.path.join(root, file), new_path)
 
 
 env.AddPostAction("$BUILD_DIR/${PROGNAME}.hex", copy_fw_files)
