@@ -13,7 +13,7 @@ community_path = env.GetProjectOption('custom_device_folder', "")
 
 
 if firmware_version == "":
-  firmware_version = "0.0.1"
+    firmware_version = "0.0.1"
 firmware_version = firmware_version.lstrip("v")
 firmware_version = firmware_version.strip(".")
 
@@ -25,8 +25,8 @@ def copy_fw_files (source, target, env):
     fw_file_name=str(target[0])
 
     if os.path.exists(community_path + "/Community/firmware") == False:
-        os.mkdir(community_path + "/Community/firmware")
-    
+        os.mkdirs(community_path + "/Community/firmware")
+
     if fw_file_name[-3:] == "bin":
         fw_file_name=fw_file_name[0:-3] + "uf2"
 
