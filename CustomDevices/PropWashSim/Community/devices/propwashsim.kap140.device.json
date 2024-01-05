@@ -49,13 +49,63 @@
     },
     {
       "id": 6,
-      "label": "Set Annunciator ON",
-      "description": "Possible values are: AP, YD, L_ARM, R_ARM, DOWN, PT, UP, ALERT, FPM, FT, HPA, INHG"
+      "label": "Set Annunciator AP",
+      "description": "Possible values are: 0=OFF, 1=ON"
     },
     {
       "id": 7,
-      "label": "Set Annunciator OFF",
-      "description": "Possible values are: AP, YD, L_ARM, R_ARM, DOWN, PT, UP, ALERT, FPM, FT, HPA, INHG"
+      "label": "Set Annunciator YD",
+      "description": "0=OFF, 1=ON"
+    },
+    {
+      "id": 8,
+      "label": "Set Annunciator L_ARM",
+      "description": "0=OFF, 1=ON"
+    },
+    {
+      "id": 9,
+      "label": "Set Annunciator R_ARM",
+      "description": "Possible values are: 0=OFF, 1=ON"
+    },
+    {
+      "id": 10,
+      "label": "Set Annunciator DOWN",
+      "description": "Possible values are: 0=OFF, 1=ON"
+    },
+    {
+      "id": 11,
+      "label": "Set Annunciator PT",
+      "description": "Possible values are: 0=OFF, 1=ON"
+    },
+    {
+      "id": 12,
+      "label": "Set Annunciator UP",
+      "description": "Possible values are: 0=OFF, 1=ON"
+    },
+    {
+      "id": 13,
+      "label": "Set Annunciator ALERT",
+      "description": "Possible values are: 0=OFF, 1=ON"
+    },
+    {
+      "id": 14,
+      "label": "Set Annunciator FPM",
+      "description": "Possible values are: 0=OFF, 1=ON"
+    },
+    {
+      "id": 15,
+      "label": "Set Annunciator FT",
+      "description": "Possible values are: 0=OFF, 1=ON"
+    },
+    {
+      "id": 16,
+      "label": "Set Annunciator HPA",
+      "description": "Possible values are: 0=OFF, 1=ON"
+    },
+    {
+      "id": 17,
+      "label": "Set Annunciator INHG",
+      "description": "Possible values are: 0=OFF, 1=ON"
     }
   ]
 }

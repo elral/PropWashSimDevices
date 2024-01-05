@@ -122,36 +122,64 @@ void MyCustomClass::set(int16_t messageID, char *setPoint)
         if (numberData==0) _lcd->prompt(B4_CLR);
         break;
 
-    // Turn ON annunciator
+    // Turn ON annunciator AP
     case 6:
-        if (strcmp(setPoint, "AP") == 0) _lcd->annunciator(AN_AP, true); else
-        if (strcmp(setPoint, "YD") == 0) _lcd->annunciator(AN_YD, true); else
-        if (strcmp(setPoint, "L_ARM") == 0) _lcd->annunciator(AN_L_ARM, true); else
-        if (strcmp(setPoint, "R_ARM") == 0) _lcd->annunciator(AN_R_ARM, true); else
-        if (strcmp(setPoint, "DOWN") == 0) _lcd->annunciator(AN_DOWN, true); else
-        if (strcmp(setPoint, "PT") == 0) _lcd->annunciator(AN_PT, true); else
-        if (strcmp(setPoint, "UP") == 0) _lcd->annunciator(AN_UP, true); else
-        if (strcmp(setPoint, "ALERT") == 0) _lcd->annunciator(AN_ALERT, true); else
-        if (strcmp(setPoint, "FPM") == 0) _lcd->annunciator(AN_FPM, true); else
-        if (strcmp(setPoint, "FT") == 0) _lcd->annunciator(AN_FT, true); else
-        if (strcmp(setPoint, "HPA") == 0) _lcd->annunciator(AN_HPA, true); else
-        if (strcmp(setPoint, "INHG") == 0) _lcd->annunciator(AN_INHG, true);
+        _lcd->annunciator(AN_AP, numberData!=0);
         break;
 
-    // Turn OFF annunciator
+    // Turn ON annunciator AN_YD
     case 7:
-        if (strcmp(setPoint, "AP") == 0) _lcd->annunciator(AN_AP, false); else
-        if (strcmp(setPoint, "YD") == 0) _lcd->annunciator(AN_YD, false); else
-        if (strcmp(setPoint, "L_ARM") == 0) _lcd->annunciator(AN_L_ARM, false); else
-        if (strcmp(setPoint, "R_ARM") == 0) _lcd->annunciator(AN_R_ARM, false); else
-        if (strcmp(setPoint, "DOWN") == 0) _lcd->annunciator(AN_DOWN, false); else
-        if (strcmp(setPoint, "PT") == 0) _lcd->annunciator(AN_PT, false); else
-        if (strcmp(setPoint, "UP") == 0) _lcd->annunciator(AN_UP, false); else
-        if (strcmp(setPoint, "ALERT") == 0) _lcd->annunciator(AN_ALERT, false); else
-        if (strcmp(setPoint, "FPM") == 0) _lcd->annunciator(AN_FPM, false); else
-        if (strcmp(setPoint, "FT") == 0) _lcd->annunciator(AN_FT, false); else
-        if (strcmp(setPoint, "HPA") == 0) _lcd->annunciator(AN_HPA, false); else
-        if (strcmp(setPoint, "INHG") == 0) _lcd->annunciator(AN_INHG, false);
+        _lcd->annunciator(AN_YD, numberData!=0);
+        break;
+
+    // Turn ON annunciator AN_L_ARM
+    case 8:
+        _lcd->annunciator(AN_L_ARM, numberData!=0);
+        break;
+
+    // Turn ON annunciator AN_R_ARM
+    case 9:
+        _lcd->annunciator(AN_R_ARM, numberData!=0);
+        break;
+    
+    // Turn ON annunciator AN_DOWN
+    case 10:
+        _lcd->annunciator(AN_DOWN, numberData!=0);
+        break;
+
+    // Turn ON annunciator AN_PT
+    case 11:
+        _lcd->annunciator(AN_PT, numberData!=0);
+        break;
+    
+    // Turn OFF annunciator AN_UP
+    case 12:
+        _lcd->annunciator(AN_UP, numberData!=0);
+        break;
+
+    // Turn OFF annunciator AN_ALERT
+    case 13:
+        _lcd->annunciator(AN_ALERT, numberData!=0);
+        break;
+
+    // Turn OFF annunciator AN_FPM
+    case 14:
+        _lcd->annunciator(AN_FPM, numberData!=0);
+        break;
+
+    // Turn OFF annunciator AN_FT
+    case 15:
+        _lcd->annunciator(AN_FT, numberData!=0);
+        break;
+
+    // Turn OFF annunciator AN_HPA
+    case 16:
+        _lcd->annunciator(AN_HPA, numberData!=0);
+        break;
+
+    // Turn OFF annunciator AN_INHG
+    case 17:
+        _lcd->annunciator(AN_INHG, numberData!=0);
         break;
 
     default:
