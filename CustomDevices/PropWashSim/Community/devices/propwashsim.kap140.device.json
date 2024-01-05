@@ -1,0 +1,61 @@
+{
+  "$schema": "./mfdevice.schema.json",
+  "Info": {
+    "Label": "PropWashSim KAP140",
+    "Type": "PROPWASHSIM_KAP140",
+    "Author": "PropWashSim",
+    "URL": "https://github.com",
+    "Version": "1.0.0"
+  },
+  "Config": {
+    "Pins": [],
+    "I2C": {
+      "Enabled": true,
+      "Addresses": [
+        "0x3F"
+      ]
+    }
+  },
+  "MessageTypes": [
+    {
+      "id": 0,
+      "label": "Set value",
+      "description": "$ will be displayed as value"
+    },
+    {
+      "id": 1,
+      "label": "Perform lamp test",
+      "description": "$ will be time in ms for the test, e.g. 1000 is 1 sec"
+    },
+    {
+      "id": 2,
+      "label": "Set B1 prompt",
+      "description": "Possible values are: HDG, AP, NAV, ROL, APR, REV, CLR"
+    },
+    {
+      "id": 3,
+      "label": "Set B2 prompt",
+      "description": "Possible values are: ALT, PFT, VS, GS, CLR"
+    },
+    {
+      "id": 4,
+      "label": "Set B3 prompt",
+      "description": "Possible values are: REV, NAV, APR, GS, CLR"
+    },
+    {
+      "id": 5,
+      "label": "Set B4 prompt",
+      "description": "Possible values are: REV, NAV, APR, GS, CLR"
+    },
+    {
+      "id": 6,
+      "label": "Set Annunciator ON",
+      "description": "Possible values are: AP, YD, L_ARM, R_ARM, DOWN, PT, UP, ALERT, FPM, FT, HPA, INHG"
+    },
+    {
+      "id": 7,
+      "label": "Set Annunciator OFF",
+      "description": "Possible values are: AP, YD, L_ARM, R_ARM, DOWN, PT, UP, ALERT, FPM, FT, HPA, INHG"
+    }
+  ]
+}
