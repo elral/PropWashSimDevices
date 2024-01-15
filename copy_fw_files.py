@@ -28,7 +28,6 @@ def copy_fw_files (source, target, env):
         fw_file_name=fw_file_name[0:-3] + "uf2"
 
     shutil.copy(fw_file_name, "./_build/" + custom_device_folder + "/Community/firmware")
-    print("Copying " + fw_file_name + " to " + custom_device_folder + "/Community/firmware")
     createCommunityZipFile(source, target, env)
 
 def createCommunityZipFile(source, target, env):
