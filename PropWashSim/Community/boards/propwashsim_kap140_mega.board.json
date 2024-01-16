@@ -37,7 +37,7 @@
       "DelayAfterFirmwareUpdate": 0,
       "FirmwareBaseName": "mobiflight_template_mega",
       "FirmwareExtension": "hex",
-      "LatestFirmwareVersion": "0.0.1",
+      "LatestFirmwareVersion": "2.5.0",
       "FriendlyName": "PropWashSim KAP140",
       "MobiFlightType": "PropWashSim KAP140 Mega",
       "ResetFirmwareFile": "reset.arduino_mega_1_0_2.hex",
